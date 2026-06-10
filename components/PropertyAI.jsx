@@ -4,7 +4,6 @@
    proxy before production (Vercel/Cloudflare function).
 */
 
-const GROQ_KEY = ""; // Add your Groq API key here
 const GROQ_MODEL = "llama-3.3-70b-versatile";
 
 const SYSTEM_PROMPT = `You are Property AI, the digital concierge for Wealth Era Property Solutions — a trusted real estate agency in the Mohali tri-city (Mohali, Chandigarh, Zirakpur, Kharar, New Chandigarh).
@@ -68,11 +67,10 @@ function PropertyAI({ onSchedule }) {
     }
 
     try {
-      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer " + GROQ_KEY,
         },
         body: JSON.stringify({
           model: GROQ_MODEL,
